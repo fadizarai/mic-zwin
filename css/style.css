@@ -18,8 +18,8 @@ h1,h2,h3{font-family:'Permanent Marker',Cairo,cursive;font-weight:400;margin:0;l
 .name{font-size:clamp(58px,15vw,160px);color:var(--cream);margin-top:34px;transform:rotate(-3deg);text-shadow:0 5px 0 #0003,0 14px 34px #0006;letter-spacing:.01em}
 .brush{display:block;width:min(78%,640px);height:20px;margin:6px auto 0}
 .brush path{fill:none;stroke:var(--cream);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-.tag{display:flex;justify-content:center;align-items:center;gap:clamp(12px,3vw,28px);margin-top:20px}
-.tag-group{display:inline-flex;align-items:center;gap:4px}
+.tag{display:flex;flex-direction:row;direction:ltr;justify-content:center;align-items:center;gap:clamp(14px,3.5vw,32px);margin-top:20px}
+.tag-tech{display:inline-flex;flex-direction:row;direction:ltr;align-items:center;gap:8px}
 .tag .ar{font:700 clamp(46px,10vw,92px)/1 'Aref Ruqaa',serif;color:var(--cream)}
 .tag .en{font:400 clamp(40px,9vw,80px)/1 'Permanent Marker',cursive;color:var(--cream)}
 .lead{max-width:40ch;margin:26px auto 0;color:#f0d9bd}
