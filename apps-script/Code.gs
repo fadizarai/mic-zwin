@@ -36,10 +36,11 @@ function doPost(e) {
 
     const num = rows.reduce((a, r) => Math.max(a, Number(r[0]) || 0), 0) + 1;
     const start = sh.getLastRow() + 1, now = new Date();
-    sh.getRange(start, 6, 4, 1).setNumberFormat('@');   // keep +216 as text
-    sh.getRange(start, 1, 4, 7).setValues(d.members.map((m, i) =>
+    const count = d.members.length;
+    sh.getRange(start, 6, count, 1).setNumberFormat('@');   // keep +216 as text
+    sh.getRange(start, 1, count, 7).setValues(d.members.map((m, i) =>
       [num, d.teamName, i ? 'Member' : 'Leader', m.name, m.email.toLowerCase(), m.phone, now]));
-    sh.getRange(start, 1, 4, 7).setBackground(teamColor(num))
+    sh.getRange(start, 1, count, 7).setBackground(teamColor(num))
       .setBorder(null, null, true, null, null, null, '#ffffff', SpreadsheetApp.BorderStyle.SOLID_THICK);
     sh.getRange(start, 1, 1, 7).setFontWeight('bold');   // leader row in bold
     return out({ ok: true, team: num });
@@ -51,7 +52,8 @@ function doPost(e) {
 }
 
 function check(d) {
-  if (!d || !d.teamName || !d.members || d.members.length !== 4) return 'A team needs exactly 4 members.';
+  if (!d || !d.teamName || !d.members || (d.members.length !== 3 && d.members.length !== 4))
+    return 'A team needs 3 or 4 members.';
   for (const m of d.members)
     if (!m.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.email || '') || !m.phone) return 'Some member details are missing.';
   return '';

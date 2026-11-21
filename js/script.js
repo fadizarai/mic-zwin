@@ -12,22 +12,28 @@ au.ontimeupdate = () => $('#prog').style.width = (au.currentTime / au.duration *
 au.onerror = () => msg.textContent = 'The voice note is coming soon.';
 
 // Member cards
-const roles = ['Team leader (you)', 'Member 2', 'Member 3', 'Member 4'];
+const roles = ['Team leader (you)', 'Member 2', 'Member 3', 'Member 4 (optional)'];
 $('#members').innerHTML = roles.map((r, i) => `
   <fieldset class="mem${i ? '' : ' leader'}"><legend><span class="star">${i + 1}</span>${r}</legend>
-    <label>Full name<input name="name${i}" required autocomplete="${i ? 'off' : 'name'}"></label>
-    <label>Email<input type="email" name="email${i}" required autocomplete="${i ? 'off' : 'email'}"></label>
-    <label>Phone number<input type="tel" name="phone${i}" required autocomplete="${i ? 'off' : 'tel'}" placeholder="+216 …"></label>
+    <label>Full name<input name="name${i}" ${i === 3 ? '' : 'required'} autocomplete="${i ? 'off' : 'name'}"></label>
+    <label>Email<input type="email" name="email${i}" ${i === 3 ? '' : 'required'} autocomplete="${i ? 'off' : 'email'}"></label>
+    <label>Phone number<input type="tel" name="phone${i}" ${i === 3 ? '' : 'required'} autocomplete="${i ? 'off' : 'tel'}" placeholder="+216 …"></label>
   </fieldset>`).join('');
 
 const fail = (m, el) => { $('#err').textContent = m; if (el) { el.classList.add('bad'); el.focus(); } return false; };
 
 function collect(f) {
   const v = n => f.elements[n].value.trim();
-  return {
-    teamName: v('teamName'), website: v('website'), submittedAt: new Date().toISOString(),
-    members: [0, 1, 2, 3].map(i => ({ name: v('name' + i), email: v('email' + i).toLowerCase(), phone: v('phone' + i) }))
-  };
+  const members = [0, 1, 2].map(i => ({
+    name: v('name' + i),
+    email: v('email' + i).toLowerCase(),
+    phone: v('phone' + i)
+  }));
+  const m3Name = v('name3'), m3Email = v('email3').toLowerCase(), m3Phone = v('phone3');
+  if (m3Name || m3Email || m3Phone) {
+    members.push({ name: m3Name, email: m3Email, phone: m3Phone });
+  }
+  return { teamName: v('teamName'), website: v('website'), submittedAt: new Date().toISOString(), members };
 }
 
 function validate(f, d) {
@@ -35,7 +41,7 @@ function validate(f, d) {
   $('#err').textContent = '';
   if (d.teamName.length < 2) return fail('Enter your team name.', f.teamName);
   const seenE = new Set(), seenP = new Set();
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 3; i++) {
     const m = d.members[i], who = roles[i].replace(' (you)', '');
     if (m.name.length < 3) return fail(`Enter the full name of ${who}.`, f.elements['name' + i]);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.email)) return fail(`The email of ${who} is not valid.`, f.elements['email' + i]);
@@ -44,6 +50,15 @@ function validate(f, d) {
     if (seenE.has(m.email)) return fail('Each member needs a different email.', f.elements['email' + i]);
     if (seenP.has(p)) return fail('Each member needs a different phone number.', f.elements['phone' + i]);
     seenE.add(m.email); seenP.add(p);
+  }
+  if (d.members.length === 4) {
+    const m = d.members[3], who = 'Member 4';
+    if (m.name.length < 3) return fail(`Enter the full name of ${who}.`, f.elements['name3']);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.email)) return fail(`The email of ${who} is not valid.`, f.elements['email3']);
+    const p = m.phone.replace(/[\s.-]/g, '').replace(/^(\+|00)216/, '');
+    if (!/^\d{8}$/.test(p)) return fail(`The phone number of ${who} must have 8 digits.`, f.elements['phone3']);
+    if (seenE.has(m.email)) return fail('Each member needs a different email.', f.elements['email3']);
+    if (seenP.has(p)) return fail('Each member needs a different phone number.', f.elements['phone3']);
   }
   return true;
 }
