@@ -1,77 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MicZwiiin – وين لل Tech | Register your team</title>
-<link rel="icon" href="assets/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;600;800&family=Permanent+Marker&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MicZwiiin – وين لل Tech | Register your team</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;600;800&family=Permanent+Marker&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<div class="kilim"></div>
-<header class="hero">
-  <div class="brand">
-    <img src="assets/logo.png" alt="Microsoft ISSATSO Club logo">
-    <span class="bar"></span>
-    <p>Microsoft<br>ISSATSO Club</p>
-  </div>
-  <h1 class="name">MicZwiiin</h1>
-  <svg class="brush" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true"><path d="M6 15C150 4 300 21 594 8"/></svg>
-  <div class="tag" role="img" aria-label="Win? To tech">
-    <span class="ar" lang="ar">وين</span>
-    <svg class="arrow" viewBox="0 0 220 80" aria-hidden="true">
-      <text x="104" y="22" text-anchor="middle">?</text>
-      <path d="M6 58C60 26 140 24 204 54"/><path d="M180 36 205 55 175 66"/>
-    </svg>
-    <span class="en">TECH</span><span class="ar" lang="ar">ل</span>
-  </div>
-  <p class="lead">A tech event for teams of three or four. Listen to the message, then register your team.</p>
-</header>
-
-<section class="wrap" id="voice-sec">
-  <div class="arch" id="vnote">
-    <h2>Before you register</h2>
-    <button class="play" id="play" type="button" aria-label="Play or pause the voice note"><i></i></button>
-    <div class="wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
-    <div class="track"><div id="prog"></div></div>
-    <div class="vmeta">
-      <p id="vmsg">Press play and listen to the voice note.</p>
-      <button class="speed-btn" id="speed" type="button" aria-label="Audio playback speed">1x</button>
+  <div class="kilim"></div>
+  <header class="hero">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Microsoft ISSATSO Club logo">
+      <span class="bar"></span>
+      <p>Microsoft<br>ISSATSO Club</p>
     </div>
-    <audio id="voice" preload="metadata" src="assets/voice-note.ogg"></audio>
-  </div>
-</section>
+    <h1 class="name">MicZwiiin</h1>
+    <svg class="brush" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M6 15C150 4 300 21 594 8" />
+    </svg>
+    <div class="tag" role="img" aria-label="Win Tech">
+      <span class="ar" lang="ar">وين</span>
+      <span class="en">TECH</span>
+    </div>
+    <p class="lead">A tech event for teams of three or four. Listen to the message, then register your team.</p>
+  </header>
 
-<section class="wrap" id="register">
-  <h2 class="title">Register your team</h2>
-  <p class="sub">Only the team leader fills in this form. Teams consist of 3 or 4 members (Member 4 is optional).</p>
-  <form id="f" novalidate>
-    <label class="tn">Team name<input name="teamName" required maxlength="40" placeholder="Pick something worth shouting"></label>
-    <div id="members"></div>
-    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button class="btn" id="go" type="submit">Register my team</button>
-    <p class="err" id="err" role="alert"></p>
-  </form>
-  <div class="done" id="done" hidden tabindex="-1"></div>
-</section>
+  <section class="wrap" id="voice-sec">
+    <div class="arch" id="vnote">
+      <h2>Before you register</h2>
+      <button class="play" id="play" type="button" aria-label="Play or pause the voice note"><i></i></button>
+      <div class="wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+      <div class="track">
+        <div id="prog"></div>
+      </div>
+      <div class="vmeta">
+        <p id="vmsg">Press play and listen to the voice note.</p>
+        <button class="speed-btn" id="speed" type="button" aria-label="Audio playback speed">1x</button>
+      </div>
+      <audio id="voice" preload="metadata" src="assets/voice-note.ogg"></audio>
+    </div>
+  </section>
 
-<section class="wrap" id="roadmap">
-  <h2 class="title">Roadmap</h2>
-  <!-- EDIT HERE: replace the text of each step. Copy a <li> block to add more steps. -->
-  <ol class="road">
-    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
-    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
-    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
-    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
-  </ol>
-</section>
+  <section class="wrap" id="register">
+    <h2 class="title">Register your team</h2>
+    <p class="sub">Only the team leader fills in this form. Teams consist of 3 or 4 members.</p>
+    <form id="f" novalidate>
+      <label class="tn">Team name<input name="teamName" required maxlength="40"
+          placeholder="Pick something worth shouting"></label>
+      <div id="members"></div>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" id="go" type="submit">Register my team</button>
+      <p class="err" id="err" role="alert"></p>
+    </form>
+    <div class="done" id="done" hidden tabindex="-1"></div>
+  </section>
 
-<footer>
-  <div class="brand"><img src="assets/logo.png" alt=""><span class="bar"></span><p>Microsoft<br>ISSATSO Club</p></div>
-</footer>
-<div class="kilim"></div>
-<script src="js/script.js"></script>
+  <section class="wrap" id="roadmap">
+    <h2 class="title">Roadmap</h2>
+    <!-- EDIT HERE: replace the text of each step. Copy a <li> block to add more steps. -->
+    <ol class="road">
+      <li><time>Date to be announced</time>
+        <h3>Step title</h3>
+        <p>Describe this step of the event here.</p>
+      </li>
+      <li><time>Date to be announced</time>
+        <h3>Step title</h3>
+        <p>Describe this step of the event here.</p>
+      </li>
+      <li><time>Date to be announced</time>
+        <h3>Step title</h3>
+        <p>Describe this step of the event here.</p>
+      </li>
+      <li><time>Date to be announced</time>
+        <h3>Step title</h3>
+        <p>Describe this step of the event here.</p>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <div class="brand"><img src="assets/logo.png" alt=""><span class="bar"></span>
+      <p>Microsoft<br>ISSATSO Club</p>
+    </div>
+  </footer>
+  <div class="kilim"></div>
+  <script src="js/script.js"></script>
 </body>
+
 </html>
