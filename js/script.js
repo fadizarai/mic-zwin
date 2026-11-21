@@ -4,7 +4,16 @@ const CONFIG = { sheetUrl: "https://script.google.com/macros/s/AKfycby0T7RGqVgzo
 const $ = s => document.querySelector(s);
 
 // Voice note
-const au = $('#voice'), box = $('#vnote'), msg = $('#vmsg');
+const au = $('#voice'), box = $('#vnote'), msg = $('#vmsg'), spd = $('#speed');
+const speeds = [1, 1.5, 2];
+let sIdx = 0;
+if (spd) {
+  spd.onclick = () => {
+    sIdx = (sIdx + 1) % speeds.length;
+    au.playbackRate = speeds[sIdx];
+    spd.textContent = speeds[sIdx] + 'x';
+  };
+}
 $('#play').onclick = () => au.paused ? au.play() : au.pause();
 au.onplay = () => { box.classList.add('on'); msg.textContent = 'Listening…'; };
 au.onpause = au.onended = () => { box.classList.remove('on'); msg.textContent = 'Press play to listen again.'; };

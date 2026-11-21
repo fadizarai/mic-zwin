@@ -36,7 +36,10 @@
     <button class="play" id="play" type="button" aria-label="Play or pause the voice note"><i></i></button>
     <div class="wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
     <div class="track"><div id="prog"></div></div>
-    <p id="vmsg">Press play and listen to the voice note.</p>
+    <div class="vmeta">
+      <p id="vmsg">Press play and listen to the voice note.</p>
+      <button class="speed-btn" id="speed" type="button" aria-label="Audio playback speed">1x</button>
+    </div>
     <audio id="voice" preload="metadata" src="assets/voice-note.ogg"></audio>
   </div>
 </section>
