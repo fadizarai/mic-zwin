@@ -1,24 +1,26 @@
-# MIC Zwin lel Tech – Win? 🚀
+# MIC Zwin lel Tech
 
-Registration portal for **MIC Zwin lel Tech**, presented by **Microsoft Club ISSATSo**.
+Event landing page and team registration portal for **MIC Zwin lel Tech** (Microsoft Club ISSATSo).
 
-## 📁 Project Structure
+## 🚀 How to Run Locally
 
-```text
-├── index.html        # Main landing & registration page
-├── assets/           # Logos, audio, and visual assets
-├── css/              # Stylesheets
-├── js/               # Client-side form handling and validation
-└── apps-script/      # Google Apps Script backend (Code.gs)
-```
+You can run the project using any of the following:
 
-## ⚙️ Setup & Configuration
+- **Directly**: Double-click `index.html` to open it in your browser.
+- **VS Code**: Install the **Live Server** extension, right-click `index.html`, and select **Open with Live Server**.
+- **Node.js**:
+  ```bash
+  npx serve .
+  ```
+- **Python**:
+  ```bash
+  python -m http.server 3000
+  ```
 
-1. **Deploy Google Apps Script**:
-   - Open a Google Sheet and go to **Extensions > Apps Script**.
-   - Paste the code from `apps-script/Code.gs`.
-   - Click **Deploy > New deployment**, select **Web app**, set execution to **Me** and access to **Anyone**.
-   - Copy the deployed Web App URL.
+## ⚙️ Configuration
 
-2. **Connect Form**:
-   - In `js/script.js`, set `CONFIG.sheetUrl` to your deployed Web App URL.
+The registration form sends submissions to a Google Sheet via Google Apps Script:
+
+1. In your Google Sheet, open **Extensions > Apps Script** and paste `apps-script/Code.gs`.
+2. Deploy as a Web App (**Execute as: Me**, **Access: Anyone**).
+3. Paste your Web App URL into `CONFIG.sheetUrl` inside `js/script.js`.
