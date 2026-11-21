@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIC Zwin lel Tech – Win? | Register your team</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="zel"></div>
+<header class="hero">
+  <img class="logo" src="assets/logo.png" alt="Microsoft Club ISSATSo logo">
+  <p class="by">Microsoft Club ISSATSo presents</p>
+  <h1><span class="gold">MIC</span> Zwin lel Tech<span class="win">Win?</span></h1>
+  <p class="lead">A tech event for teams of four. Listen to the message, then register your team.</p>
+</header>
+
+<section class="wrap" id="voice-sec">
+  <div class="arch" id="vnote">
+    <h2>Before you register</h2>
+    <button class="play" id="play" type="button" aria-label="Play or pause the voice note"><i></i></button>
+    <div class="wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+    <div class="track"><div id="prog"></div></div>
+    <p id="vmsg">Press play and listen to the voice note.</p>
+    <audio id="voice" preload="metadata" src="assets/voice-note.mp3"></audio>
+  </div>
+</section>
+
+<section class="wrap" id="register">
+  <h2 class="title">Register your team</h2>
+  <p class="sub">Only the team leader fills in this form, for all four members. Each team needs exactly four people.</p>
+  <form id="f" novalidate>
+    <label class="tn">Team name<input name="teamName" required maxlength="40" placeholder="Pick something worth shouting"></label>
+    <div id="members"></div>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" id="go" type="submit">Register my team</button>
+    <p class="err" id="err" role="alert"></p>
+  </form>
+  <div class="done" id="done" hidden tabindex="-1"></div>
+</section>
+
+<section class="wrap" id="roadmap">
+  <h2 class="title">Roadmap</h2>
+  <!-- EDIT HERE: replace the text of each step. Copy a <li> block to add more steps. -->
+  <ol class="road">
+    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
+    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
+    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
+    <li><time>Date to be announced</time><h3>Step title</h3><p>Describe this step of the event here.</p></li>
+  </ol>
+</section>
+
+<div class="zel"></div>
+<footer><img src="assets/logo.png" alt=""><p>Microsoft Club ISSATSo</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>
