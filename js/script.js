@@ -1,5 +1,5 @@
 /* ===== EDIT HERE: paste your Google Apps Script Web App URL ===== */
-const CONFIG = { sheetUrl: "" };
+const CONFIG = { sheetUrl: "https://script.google.com/macros/s/AKfycby0T7RGqVgzoPkBlLJM8LMEAlxaM-8ydkJy7SKlOsYnF8zAPn-dwNioNCwWWwrocXav/exec" };
 /* ================================================================ */
 const $ = s => document.querySelector(s);
 
@@ -24,8 +24,10 @@ const fail = (m, el) => { $('#err').textContent = m; if (el) { el.classList.add(
 
 function collect(f) {
   const v = n => f.elements[n].value.trim();
-  return { teamName: v('teamName'), website: v('website'), submittedAt: new Date().toISOString(),
-    members: [0, 1, 2, 3].map(i => ({ name: v('name' + i), email: v('email' + i).toLowerCase(), phone: v('phone' + i) })) };
+  return {
+    teamName: v('teamName'), website: v('website'), submittedAt: new Date().toISOString(),
+    members: [0, 1, 2, 3].map(i => ({ name: v('name' + i), email: v('email' + i).toLowerCase(), phone: v('phone' + i) }))
+  };
 }
 
 function validate(f, d) {
