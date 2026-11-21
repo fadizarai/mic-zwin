@@ -7,6 +7,10 @@
  */
 const SHEET = 'Registrations';
 
+function doGet(e) {
+  return out({ ok: true, message: 'MIC Zwin lel Tech registration backend is active.' });
+}
+
 function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
