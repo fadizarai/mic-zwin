@@ -67,8 +67,8 @@ input.bad{border-color:var(--red);background:#fff0ee}
 .done h3{font-size:30px;color:var(--red);margin-bottom:10px}
 .status-badge{display:inline-block;padding:6px 16px;border-radius:20px;font:700 13px Cairo,sans-serif;margin-bottom:12px;letter-spacing:.02em}
 .status-badge.top15{background:#145a32;color:#d4efdf;border:1px solid #27ae60;box-shadow:0 0 14px rgba(39,174,96,0.35)}
-.status-badge.waiting{background:#7d3c00;color:#fdebd0;border:1px solid #d35400;box-shadow:0 0 14px rgba(211,84,0,0.35)}
-.done.waitlist h3{color:#b33900}
+.status-badge.full{background:#7d1515;color:#fdebd0;border:1px solid #c0392b;box-shadow:0 0 14px rgba(192,57,43,0.35)}
+.done.full h3{color:#a92222}
 .laptop-note{margin-top:28px;padding:20px 22px;border-radius:18px;text-align:center;background:radial-gradient(ellipse at center,rgba(246,220,139,0.22),rgba(61,8,8,0.7));border:2px solid var(--gold2);box-shadow:0 0 25px rgba(226,180,60,0.45),inset 0 0 18px rgba(226,180,60,0.25);animation:glow-pulse 2.4s ease-in-out infinite alternate}
 @keyframes glow-pulse{from{box-shadow:0 0 15px rgba(226,180,60,0.35),inset 0 0 10px rgba(226,180,60,0.15);border-color:var(--gold3)}to{box-shadow:0 0 35px rgba(255,230,140,0.85),0 0 50px rgba(217,164,65,0.45),inset 0 0 24px rgba(255,230,140,0.35);border-color:var(--gold1)}}
 .laptop-tag{display:inline-block;padding:4px 14px;border-radius:20px;background:var(--red);color:var(--cream);font:700 12px Cairo,sans-serif;letter-spacing:.08em;margin-bottom:8px;box-shadow:0 2px 8px rgba(0,0,0,0.4)}

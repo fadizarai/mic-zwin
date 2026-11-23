@@ -93,12 +93,11 @@ $('#f').addEventListener('submit', async e => {
         <p>L'équipe <b></b> fait partie des 15 équipes sélectionnées. Un email de confirmation a été envoyé au leader.</p>
       `;
     } else {
-      const waitPos = Number(j.team) - 15;
-      done.className = 'done waitlist';
+      done.className = 'done full';
       done.innerHTML = `
-        <div class="status-badge waiting">Liste d'attente · Position N°${waitPos}</div>
-        <h3>Liste d'attente</h3>
-        <p>Les 15 places principales sont complètes. Votre équipe <b></b> est enregistrée sur la liste d'attente (position N°${waitPos}). Surveillez vos emails !</p>
+        <div class="status-badge full">Complet · Places épuisées</div>
+        <h3>Événement complet</h3>
+        <p>Malheureusement, le nombre de places est limité et l'événement a atteint son maximum de participants (15 équipes). Les inscriptions sont closes pour l'équipe <b></b>.</p>
       `;
     }
     done.querySelector('b').textContent = d.teamName;
