@@ -90,7 +90,7 @@ $('#f').addEventListener('submit', async e => {
       done.innerHTML = `
         <div class="status-badge top15">Équipe N°${j.team} / 15 · Place confirmée</div>
         <h3>Félicitations !</h3>
-        <p>L'équipe <b></b> fait partie des 15 équipes sélectionnées. Un email de confirmation a été envoyé au leader.</p>
+        <p>L'équipe <b></b> fait partie des 15 équipes sélectionnées pour l'événement. Préparez-vous pour les challenges !</p>
       `;
     } else {
       done.className = 'done full';
