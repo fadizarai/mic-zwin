@@ -84,7 +84,23 @@ $('#f').addEventListener('submit', async e => {
     if (!j.ok) throw new Error(j.error || 'Something went wrong.');
     f.hidden = true;
     const done = $('#done'); done.hidden = false;
-    done.innerHTML = '<h3>Welcome to the souk of tech!</h3><p>Team <b></b> is registered. We will contact the leader by email.</p>';
+    const isTop15 = Number(j.team) <= 15;
+    if (isTop15) {
+      done.className = 'done accepted';
+      done.innerHTML = `
+        <div class="status-badge top15">Équipe N°${j.team} / 15 · Place confirmée</div>
+        <h3>Félicitations !</h3>
+        <p>L'équipe <b></b> fait partie des 15 équipes sélectionnées. Un email de confirmation a été envoyé au leader.</p>
+      `;
+    } else {
+      const waitPos = Number(j.team) - 15;
+      done.className = 'done waitlist';
+      done.innerHTML = `
+        <div class="status-badge waiting">Liste d'attente · Position N°${waitPos}</div>
+        <h3>Liste d'attente</h3>
+        <p>Les 15 places principales sont complètes. Votre équipe <b></b> est enregistrée sur la liste d'attente (position N°${waitPos}). Surveillez vos emails !</p>
+      `;
+    }
     done.querySelector('b').textContent = d.teamName;
     done.focus();
   } catch (x) {
