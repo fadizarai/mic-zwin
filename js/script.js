@@ -84,7 +84,7 @@ $('#f').addEventListener('submit', async e => {
     if (!j.ok) throw new Error(j.error || 'Something went wrong.');
     f.hidden = true;
     const done = $('#done'); done.hidden = false;
-    const isTop15 = Number(j.team) <= 15;
+    const isTop15 = !j.full && Number(j.team) <= 15;
     if (isTop15) {
       done.className = 'done accepted';
       done.innerHTML = `
