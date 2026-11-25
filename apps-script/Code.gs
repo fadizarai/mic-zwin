@@ -13,8 +13,8 @@ function doGet(e) {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const sh = ss.getSheetByName(SHEET);
     const rows = (sh && sh.getLastRow() > 1) ? sh.getRange(2, 1, sh.getLastRow() - 1, 1).getValues() : [];
-    const count = rows.reduce((a, r) => Math.max(a, Number(r[0]) || 0), 0);
-    return out({ ok: true, count: count, full: count >= MAX_TEAMS });
+    const count = new Set(rows.map(r => Number(r[0])).filter(n => n > 0)).size;
+    return out({ ok: true, registeredTeams: count, maxTeams: MAX_TEAMS, full: count >= MAX_TEAMS });
   } catch (err) {
     return out({ ok: true, message: 'MIC Zwin lel Tech registration backend is active.' });
   }
@@ -38,10 +38,11 @@ function doPost(e) {
     }
     const rows = sh.getLastRow() > 1 ? sh.getRange(2, 1, sh.getLastRow() - 1, 7).getValues() : [];
     
-    // Check if 15 teams limit has already been reached
-    const currentTeams = rows.reduce((a, r) => Math.max(a, Number(r[0]) || 0), 0);
-    if (currentTeams >= MAX_TEAMS) {
-      return out({ ok: true, full: true, team: currentTeams + 1 });
+    // Count distinct registered teams in the sheet
+    const registeredTeams = new Set(rows.map(r => Number(r[0])).filter(n => n > 0)).size;
+    if (registeredTeams >= MAX_TEAMS) {
+      // STOP HERE: Do not insert any row into the sheet!
+      return out({ ok: true, full: true, team: registeredTeams + 1 });
     }
 
     if (rows.some(r => String(r[1]).toLowerCase() === d.teamName.toLowerCase()))
@@ -50,7 +51,8 @@ function doPost(e) {
     const dup = d.members.find(m => used.indexOf(m.email.toLowerCase()) > -1);
     if (dup) return out({ ok: false, error: dup.email + ' is already registered in another team.' });
 
-    const num = currentTeams + 1;
+    const maxNum = rows.reduce((a, r) => Math.max(a, Number(r[0]) || 0), 0);
+    const num = maxNum + 1;
     const start = sh.getLastRow() + 1, now = new Date();
     const count = d.members.length;
     sh.getRange(start, 6, count, 1).setNumberFormat('@');   // keep +216 as text
