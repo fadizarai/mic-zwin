@@ -1,5 +1,5 @@
 /* ===== EDIT HERE: paste your Google Apps Script Web App URL ===== */
-const CONFIG = { sheetUrl: "https://script.google.com/macros/s/AKfycby0T7RGqVgzoPkBlLJM8LMEAlxaM-8ydkJy7SKlOsYnF8zAPn-dwNioNCwWWwrocXav/exec" };
+const CONFIG = { sheetUrl: "https://script.google.com/macros/s/AKfycbzEUdRZsr_4TnGAOVV8hKJ8QmvzKzTgFtAP0SQd7gsC88XIIjiCFRFS9dNkv87xngTY/exec" };
 /* ================================================================ */
 const $ = s => document.querySelector(s);
 
